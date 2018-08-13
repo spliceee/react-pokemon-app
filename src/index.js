@@ -11,7 +11,7 @@ import { createLogger } from 'redux-logger'
 import { composeWithDevTools } from 'redux-devtools-extension';
 
 import rootReducer from './reducers';
-import { fetchPokemonsList } from './services';
+// import { fetchPokemons } from './services';
 
 const loggerMiddleware = createLogger()
 const store = createStore(
@@ -24,8 +24,7 @@ const store = createStore(
   )
 );
 
-// store.dispatch(fetchRequest());
-store.dispatch(fetchPokemonsList());
+// store.dispatch(fetchPokemons());
 
 const root = document.getElementById('root');
 

@@ -1,7 +1,11 @@
-import { FETCH_POKEMON_REQUEST, FETCH_POKEMON_SUCCESS, FETCH_POKEMON_FAILURE } from '../actions';
+import {
+  FETCH_POKEMON_REQUEST,
+  FETCH_POKEMON_SUCCESS,
+  FETCH_POKEMON_FAILURE
+} from '../constants/pokemon';
 
 const initialState = {
-  list: [],
+  items: [],
   fetching: false,
   fetched: false,
   error: false,
@@ -15,17 +19,17 @@ const pokemons = (state = initialState, {type, payload}) => {
         ...state,
         fetching: true
       }
-    case FETCH_POKEMON_FAILURE:
-      return {
-        ...state,
-        error: true,
-        message: payload.message
-      }
     case FETCH_POKEMON_SUCCESS:
       return {
         ...state,
         fetched: true,
-        list: payload.list
+        items: payload
+      }
+    case FETCH_POKEMON_FAILURE:
+      return {
+        ...state,
+        error: true,
+        message: payload
       }
     default:
       return state;
