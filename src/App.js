@@ -1,13 +1,16 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
+import { Navbar } from './components/Navbar';
+// import { Footbar } from './components/Footbar';
+
 import { fetchPokemons } from './services';
 
 class App extends Component {
   componentWillMount(){
     this.props.fetchPokemons();
   }
-  render() {
+  render(){
     const { pokemons, fetching, fetched } = this.props;
 
     if (fetching && !fetched) {
@@ -16,9 +19,16 @@ class App extends Component {
 
     return (
       <div className="App">
-        {pokemons.map((pokemon, index) =>
-          <div key={index}>{pokemon.name}</div>
-        )}
+        <Navbar />
+        <div className="Main">
+          {pokemons.map((pokemon, index) =>
+            <div key={index}>
+              <img src={'https://img.pokemondb.net/sprites/x-y/normal/'+ pokemon.name +'.png'} />
+              <h3>{pokemon.name}</h3>
+            </div>
+          )}
+        </div>
+        
       </div>
     );
   }
@@ -36,5 +46,4 @@ function mapDispatchToProps(dispatch){
   }
 }
 
-// export default App;
 export default connect(mapStateToProps, mapDispatchToProps)(App)

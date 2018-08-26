@@ -24,8 +24,6 @@ const store = createStore(
   )
 );
 
-// store.dispatch(fetchPokemons());
-
 const root = document.getElementById('root');
 
 ReactDOM.render(
