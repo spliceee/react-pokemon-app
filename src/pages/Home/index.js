@@ -1,6 +1,15 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
+import './Home.css';
+
+import Grid from '@material-ui/core/Grid';
+import Card from '@material-ui/core/Card';
+// import CardActions from '@material-ui/core/CardActions';
+import CardContent from '@material-ui/core/CardContent';
+import CardMedia from '@material-ui/core/CardMedia';
+import Typography from '@material-ui/core/Typography';
+
 import { fetchPokemons } from '../../services';
 
 class PageHome extends Component {
@@ -16,12 +25,29 @@ class PageHome extends Component {
 
     return (
       <div className="Page PageHome">
-        {pokemons.map((pokemon, index) =>
-          <div key={index}>
-            <img src={'https://img.pokemondb.net/sprites/x-y/normal/'+ pokemon.name +'.png'} />
-            <h3>{pokemon.name}</h3>
-          </div>
-        )}
+        <div className="Container">
+          <Grid container spacing={16}>
+            {pokemons.map((pokemon, index) => (
+              <Grid item key={index} xs={6} sm={4} md={3} lg={2}>
+                <Card className="Card CardPokemon">
+                  <CardMedia className="Image"
+                             image={`https://img.pokemondb.net/sprites/x-y/normal/${pokemon.name}.png`} />
+                  <CardContent className="Content">
+                    <Typography gutterBottom variant="headline" component="h2">{pokemon.name}</Typography>
+                  </CardContent>
+                  {/* <CardActions>
+                    <Button size="small" color="primary">
+                      View
+                    </Button>
+                    <Button size="small" color="primary">
+                      Edit
+                    </Button>
+                  </CardActions> */}
+                </Card>
+              </Grid>
+            ))}
+          </Grid>
+        </div>
       </div>
     );
   }

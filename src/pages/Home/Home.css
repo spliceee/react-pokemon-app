@@ -1,0 +1,27 @@
+/* Page: Home */
+
+.Container {
+  max-width: 1280px;
+
+  margin-right: auto;
+  margin-left: auto;
+
+  padding: 16px;
+}
+
+/* Card  */
+.CardPokemon {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+.CardPokemon .Image {
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+
+  padding-top: 56.25%;
+}
+.CardPokemon .Content {
+  flex-grow: 1;
+}
