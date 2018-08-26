@@ -1,11 +1,18 @@
 import React, { Component } from 'react';
 
+import './Footbar.css';
+
+import Typography from '@material-ui/core/Typography';
+
 class Footbar extends Component {
   render(){
+    const year = new Date().getFullYear();
     return (
-      <div className="Footbar">
-        Footbar
-      </div>
+      <footer className="Footbar">
+        <Typography color="inherit">
+          PokemonAPP {year}
+        </Typography>
+      </footer>
     );
   }
 }

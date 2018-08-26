@@ -35,14 +35,6 @@ class PageHome extends Component {
                   <CardContent className="Content">
                     <Typography gutterBottom variant="headline" component="h2">{pokemon.name}</Typography>
                   </CardContent>
-                  {/* <CardActions>
-                    <Button size="small" color="primary">
-                      View
-                    </Button>
-                    <Button size="small" color="primary">
-                      Edit
-                    </Button>
-                  </CardActions> */}
                 </Card>
               </Grid>
             ))}
