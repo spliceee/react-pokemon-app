@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
-import { Navbar } from './components/Navbar';
-// import { Footbar } from './components/Footbar';
+// import { Navbar, Footbar } from './components';
+import Navbar from './components/Navbar';
+import Footbar from './components/Footbar';
 
 import { fetchPokemons } from './services';
 
@@ -20,7 +21,7 @@ class App extends Component {
     return (
       <div className="App">
         <Navbar />
-        <div className="Main">
+        <div className="Page">
           {pokemons.map((pokemon, index) =>
             <div key={index}>
               <img src={'https://img.pokemondb.net/sprites/x-y/normal/'+ pokemon.name +'.png'} />
@@ -28,7 +29,7 @@ class App extends Component {
             </div>
           )}
         </div>
-        
+        <Footbar />
       </div>
     );
   }
