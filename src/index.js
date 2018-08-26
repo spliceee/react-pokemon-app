@@ -11,7 +11,6 @@ import { createLogger } from 'redux-logger'
 import { composeWithDevTools } from 'redux-devtools-extension';
 
 import rootReducer from './reducers';
-// import { fetchPokemons } from './services';
 
 const loggerMiddleware = createLogger()
 const store = createStore(

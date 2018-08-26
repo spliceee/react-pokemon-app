@@ -6,6 +6,7 @@ import {
 
 const initialState = {
   items: [],
+  total: 0,
   fetching: false,
   fetched: false,
   error: false,
@@ -23,7 +24,8 @@ const pokemons = (state = initialState, {type, payload}) => {
       return {
         ...state,
         fetched: true,
-        items: payload
+        items: payload.results,
+        total: payload.count
       }
     case FETCH_POKEMON_FAILURE:
       return {
