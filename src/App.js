@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 
 // Components
 import Navbar from './components/Navbar';
@@ -9,11 +9,13 @@ import PageHome from './pages/Home';
 class App extends Component {
   render(){
     return (
-      <div className="App">
+      <Fragment>
         <Navbar />
-        <PageHome />
+        <div className="App">
+          <PageHome />
+        </div>
         <Footbar />
-      </div>
+      </Fragment>
     );
   }
 }

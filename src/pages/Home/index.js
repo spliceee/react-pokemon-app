@@ -5,9 +5,9 @@ import './Home.css';
 
 import Grid from '@material-ui/core/Grid';
 import Card from '@material-ui/core/Card';
-// import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
+import LinearProgress from '@material-ui/core/LinearProgress';
 import Typography from '@material-ui/core/Typography';
 
 import { fetchPokemons } from '../../services';
@@ -17,10 +17,14 @@ class PageHome extends Component {
     this.props.fetchPokemons();
   }
   render(){
-    const { pokemons, fetching, fetched } = this.props;
+    const { pokemons, fetching, fetched, error, message } = this.props;
 
-    if (fetching && !fetched) {
-      return <div>Loading...</div>
+    if (error && message){
+      return <div>{message}</div>
+    }
+
+    if (fetching && !fetched){
+      return <LinearProgress color="secondary" />
     }
 
     return (
