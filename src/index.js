@@ -1,35 +1,21 @@
+import './index.css';
+
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
+
+import { Provider } from "react-redux";
+import { ConnectedRouter } from "react-router-redux";
+
+import store, { history } from './Store';
 import App from './App';
-
-// Redux
-import { createStore, applyMiddleware } from 'redux';
-import { Provider } from 'react-redux';
-import thunkMiddleware from 'redux-thunk'
-import { createLogger } from 'redux-logger'
-import { composeWithDevTools } from 'redux-devtools-extension';
-
-import rootReducer from './reducers';
-
-const loggerMiddleware = createLogger()
-const store = createStore(
-  rootReducer,
-  composeWithDevTools(
-    applyMiddleware(
-      thunkMiddleware,
-      loggerMiddleware
-    )
-  )
-);
-
-const root = document.getElementById('root');
 
 ReactDOM.render(
   <Provider store={store}>
-    <App />
+    <ConnectedRouter history={history}>
+      <App />
+    </ConnectedRouter>
   </Provider>,
-  root
+  document.getElementById('root')
 );
 
 // import registerServiceWorker from './registerServiceWorker';

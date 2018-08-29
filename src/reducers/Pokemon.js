@@ -2,7 +2,7 @@ import {
   FETCH_POKEMON_REQUEST,
   FETCH_POKEMON_SUCCESS,
   FETCH_POKEMON_FAILURE
-} from '../constants/pokemon';
+} from '../types/Pokemon';
 
 const initialState = {
   items: [],

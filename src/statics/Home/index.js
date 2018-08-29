@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
-import './Home.css';
+import './index.css';
 
 import Grid from '@material-ui/core/Grid';
 import Card from '@material-ui/core/Card';
@@ -11,9 +11,10 @@ import LinearProgress from '@material-ui/core/LinearProgress';
 import Typography from '@material-ui/core/Typography';
 import TablePagination from '@material-ui/core/TablePagination';
 
-import { fetchPokemons } from '../../services';
+// import { fetchPokemons } from '../../services/Pokemon';
+import { fetchRequest } from '../../actions/Pokemon';
 
-class PageHome extends Component {
+class Home extends Component {
   constructor(props){
     super(props);
 
@@ -100,16 +101,16 @@ class PageHome extends Component {
 }
 
 const mapStateToProps = state => ({
-  total: state.pokemons.total,
-  pokemons: state.pokemons.items,
-  fetching: state.pokemons.fetching,
-  fetched: state.pokemons.fetched
+  total: state.pokemon.total,
+  pokemons: state.pokemon.items,
+  fetching: state.pokemon.fetching,
+  fetched: state.pokemon.fetched
 });
 
 function mapDispatchToProps(dispatch){
   return {
-    fetchPokemons: (offset, limit) => dispatch(fetchPokemons(offset, limit))
+    fetchPokemons: (offset, limit) => dispatch(fetchRequest(offset, limit))
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(PageHome)
+export default connect(mapStateToProps, mapDispatchToProps)(Home)

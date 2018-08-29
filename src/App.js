@@ -1,20 +1,19 @@
 import React, { Component, Fragment } from 'react';
 
-// Components
-import Navbar from './components/Navbar';
-import Footbar from './components/Footbar';
-// Pages
-import PageHome from './pages/Home';
+// Common
+import { Header, Footer } from './common';
+// Routes
+import Routes from './Routes';
 
 class App extends Component {
   render(){
     return (
       <Fragment>
-        <Navbar />
+        <Header />
         <div className="App">
-          <PageHome />
+          <Routes />
         </div>
-        <Footbar />
+        <Footer />
       </Fragment>
     );
   }
