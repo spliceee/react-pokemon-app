@@ -1,0 +1,19 @@
+{
+  "name": "api",
+  "version": "1.0.0",
+  "main": "index.js",
+  "author": "Serhiy Ivaneyko",
+  "license": "MIT",
+  "scripts": {
+    "serve": "nodemon app.js"
+  },
+  "devDependencies": {
+    "nodemon": "^1.18.4"
+  },
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "express": "^4.16.3",
+    "mongodb": "^3.1.4",
+    "mongoose": "^5.2.12"
+  }
+}
