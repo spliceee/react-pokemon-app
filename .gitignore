@@ -26,3 +26,7 @@ package-lock.json
 
 # Database config
 db_config.js
+
+# Yarn lock
+/api/yarn.lock
+yarn.lock
