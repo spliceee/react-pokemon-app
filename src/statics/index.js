@@ -1,2 +1,2 @@
-export { default as StaticHome } from './Home';
-export { default as StaticNotFound } from './NotFound';
+export { default as StaticHome } from './Home/Home';
+export { default as StaticNotFound } from './NotFound/NotFound';

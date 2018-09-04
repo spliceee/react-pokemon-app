@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 
-import './index.css';
+import './Home.css';
 
 import Grid from '@material-ui/core/Grid';
 import Card from '@material-ui/core/Card';
@@ -11,7 +12,6 @@ import LinearProgress from '@material-ui/core/LinearProgress';
 import Typography from '@material-ui/core/Typography';
 import TablePagination from '@material-ui/core/TablePagination';
 
-// import { fetchPokemons } from '../../services/Pokemon';
 import { fetchRequest } from '../../actions/Pokemon';
 
 class Home extends Component {
@@ -20,8 +20,8 @@ class Home extends Component {
 
     this.state = {
       page: 0,
-      offset: 10,
-      rowsPerPage: 10
+      rowsPerPage: 10,
+      offset: 0,
     };
 
     this.handleChangePage = this.handleChangePage.bind(this);
@@ -30,8 +30,14 @@ class Home extends Component {
 
   componentWillMount(){
     const { rowsPerPage, offset } = this.state;
-    this.props.fetchPokemons(rowsPerPage, offset);
+    this.props.fetchPokemons({limit: rowsPerPage, offset});
   }
+
+  getIdFromURL(url){
+    const arr = url.split('/');
+    return `/pokemons/${arr[arr.length - 2]}`;
+  }
+
   // Pagination
   handleChangePage(evt, page){
     const { rowsPerPage } = this.state;
@@ -83,12 +89,13 @@ class Home extends Component {
 
           <Grid container spacing={16}>
             {pokemons.map((pokemon, index) => (
-              <Grid item key={index} xs={6} sm={4} md={3} lg={2}>
+              <Grid key={index} item xs={6} sm={4} md={3} lg={2}>
                 <Card className="Card CardPokemon">
-                  <CardMedia className="Image"
-                             image={`https://img.pokemondb.net/sprites/x-y/normal/${pokemon.name}.png`} />
+                  <CardMedia className="Image" image={`https://img.pokemondb.net/sprites/x-y/normal/${pokemon.name}.png`} />
                   <CardContent className="Content">
-                    <Typography gutterBottom variant="headline" component="h2">{'#'+ index +'_'+ pokemon.name}</Typography>
+                    <Typography gutterBottom variant="headline" component="h2">
+                      <Link to={this.getIdFromURL(pokemon.url)}>{pokemon.name}</Link>
+                    </Typography>
                   </CardContent>
                 </Card>
               </Grid>

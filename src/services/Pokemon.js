@@ -2,7 +2,7 @@ import { API_URL } from '../App.constants';
 
 class PokemonService {
 
-  fetchPokemons(limit, offset) {
+  fetchPokemons({limit, offset}) {
     return fetch(`${API_URL}/pokemon?limit=${limit}&offset=${offset}`, {
       headers: new Headers({
         'Content-Type': 'application/json'

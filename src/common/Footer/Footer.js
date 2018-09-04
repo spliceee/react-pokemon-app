@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-import './index.css';
+import './Footer.css';
 
 import Typography from '@material-ui/core/Typography';
 

@@ -5,8 +5,9 @@ import {
 } from '../types/Pokemon';
 
 // Fetch pokemons list
-export const fetchRequest = () => ({
-  type: FETCH_POKEMON_REQUEST
+export const fetchRequest = (params) => ({
+  type: FETCH_POKEMON_REQUEST,
+  payload: params
 });
 
 export const fetchSuccess = (pokemons) => ({
