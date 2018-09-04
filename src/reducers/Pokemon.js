@@ -22,7 +22,10 @@ const pokemons = (state = initialState, {type, payload}) => {
     case FETCH_BY_ID_REQUEST:
       return {
         ...state,
-        fetching: true
+        fetching: true,
+        fetched: false,
+        error: false,
+        message: null
       }
     case FETCH_LIST_SUCCESS:
       return {

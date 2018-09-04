@@ -1,4 +1,5 @@
 import React, { Component, Fragment } from 'react';
+import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
 import { withStyles } from '@material-ui/core/styles';
@@ -30,8 +31,8 @@ class Header extends Component {
       <Fragment>
         <AppBar position="static">
           <Toolbar>
-            <Typography variant="title" color="inherit" className={classes.flex}>
-              Home
+            <Typography variant="title" color="inherit" className={classes.typo}>
+              <Link className={classes.typoLink} to="/">Home</Link>
             </Typography>
 
             <Button color="inherit" onClick={this.handleLoginVisible}>Login</Button>
@@ -50,8 +51,12 @@ Header.propTypes = {
 }
 
 const styles = {
-  flex: {
+  typo: {
     flexGrow: 1
+  },
+  typoLink: {
+    color: '#ffffff',
+    textDecoration: 'none'
   }
 };
 
