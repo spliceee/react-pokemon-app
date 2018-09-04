@@ -1,20 +1,34 @@
 import { call, put, takeLatest } from 'redux-saga/effects';
 
-import { fetchSuccess, fetchFailure } from '../actions/Pokemon';
+import {
+  fetchListSuccess,
+  fetchByIdSuccess,
+  fetchFailure
+} from '../actions/Pokemon';
 
 import PokemonService from '../services/Pokemon';
 
-function* fetchPokemons(action){
+function* fetchList(action){
   try {
-    const data = yield call(PokemonService.fetchPokemons, action.payload);
-    yield put(fetchSuccess(data));
+    const data = yield call(PokemonService.fetchList, action.payload);
+    yield put(fetchListSuccess(data));
+  } catch(err) {
+    yield put(fetchFailure(err));
+  }
+}
+
+function* fetchById(action){
+  try {
+    const data = yield call(PokemonService.fetchByID, action.payload);
+    yield put(fetchByIdSuccess(data));
   } catch(err) {
     yield put(fetchFailure(err));
   }
 }
 
 function* PokemonSaga(){
-  yield takeLatest('FETCH_POKEMON_REQUEST', fetchPokemons);
+  yield takeLatest('[Pokemon] Fetch request', fetchList);
+  yield takeLatest('[Pokemon] Fetch by id', fetchById);
 }
 
 export default PokemonSaga;

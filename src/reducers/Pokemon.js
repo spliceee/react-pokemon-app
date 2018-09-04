@@ -1,11 +1,14 @@
 import {
-  FETCH_POKEMON_REQUEST,
-  FETCH_POKEMON_SUCCESS,
-  FETCH_POKEMON_FAILURE
+  FETCH_LIST_REQUEST,
+  FETCH_LIST_SUCCESS,
+  FETCH_BY_ID_REQUEST,
+  FETCH_BY_ID_SUCCESS,
+  FETCH_FAILURE
 } from '../types/Pokemon';
 
 const initialState = {
   items: [],
+  pokemonItem: null,
   total: 0,
   fetching: false,
   fetched: false,
@@ -15,19 +18,26 @@ const initialState = {
 
 const pokemons = (state = initialState, {type, payload}) => {
   switch (type){
-    case FETCH_POKEMON_REQUEST:
+    case FETCH_LIST_REQUEST:
+    case FETCH_BY_ID_REQUEST:
       return {
         ...state,
         fetching: true
       }
-    case FETCH_POKEMON_SUCCESS:
+    case FETCH_LIST_SUCCESS:
       return {
         ...state,
         fetched: true,
         items: payload.results,
         total: payload.count
       }
-    case FETCH_POKEMON_FAILURE:
+    case FETCH_BY_ID_SUCCESS:
+      return {
+        ...state,
+        fetched: true,
+        pokemonItem: payload,
+      }
+    case FETCH_FAILURE:
       return {
         ...state,
         error: true,

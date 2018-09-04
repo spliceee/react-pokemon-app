@@ -12,7 +12,7 @@ import LinearProgress from '@material-ui/core/LinearProgress';
 import Typography from '@material-ui/core/Typography';
 import TablePagination from '@material-ui/core/TablePagination';
 
-import { fetchRequest } from '../../actions/Pokemon';
+import { fetchListRequest } from '../../actions/Pokemon';
 
 class Home extends Component {
   constructor(props){
@@ -30,7 +30,7 @@ class Home extends Component {
 
   componentWillMount(){
     const { rowsPerPage, offset } = this.state;
-    this.props.fetchPokemons({limit: rowsPerPage, offset});
+    this.props.fetchListRequest({limit: rowsPerPage, offset});
   }
 
   getIdFromURL(url){
@@ -46,7 +46,7 @@ class Home extends Component {
     this.setState({ page });
     this.setState({ offset });
 
-    this.props.fetchPokemons(rowsPerPage, offset);
+    this.props.fetchListRequest(rowsPerPage, offset);
   }
   handleChangeRowsPerPage(evt){
     const { value } = evt.target
@@ -54,7 +54,7 @@ class Home extends Component {
 
     this.setState({ rowsPerPage: value });
 
-    this.props.fetchPokemons(value, offset);
+    this.props.fetchListRequest(value, offset);
   }
 
   render(){
@@ -86,7 +86,6 @@ class Home extends Component {
             onChangePage={this.handleChangePage}
             onChangeRowsPerPage={this.handleChangeRowsPerPage}
           />
-
           <Grid container spacing={16}>
             {pokemons.map((pokemon, index) => (
               <Grid key={index} item xs={6} sm={4} md={3} lg={2}>
@@ -111,12 +110,14 @@ const mapStateToProps = state => ({
   total: state.pokemon.total,
   pokemons: state.pokemon.items,
   fetching: state.pokemon.fetching,
-  fetched: state.pokemon.fetched
+  fetched: state.pokemon.fetched,
+  error: state.pokemon.error,
+  message: state.pokemon.message
 });
 
 function mapDispatchToProps(dispatch){
   return {
-    fetchPokemons: (offset, limit) => dispatch(fetchRequest(offset, limit))
+    fetchListRequest: (offset, limit) => dispatch(fetchListRequest(offset, limit))
   }
 }
 

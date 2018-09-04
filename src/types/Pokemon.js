@@ -1,4 +1,8 @@
 // Fetch lists
-export const FETCH_POKEMON_REQUEST = 'FETCH_POKEMON_REQUEST';
-export const FETCH_POKEMON_FAILURE = 'FETCH_POKEMON_FAILURE';
-export const FETCH_POKEMON_SUCCESS = 'FETCH_POKEMON_SUCCESS';
+export const FETCH_LIST_REQUEST = '[Pokemon] Fetch request';
+export const FETCH_LIST_SUCCESS = '[Pokemon] Fetch list success';
+// Fetch by id
+export const FETCH_BY_ID_REQUEST = '[Pokemon] Fetch by id';
+export const FETCH_BY_ID_SUCCESS = '[Pokemon] Fetch by id success';
+
+export const FETCH_FAILURE = '[Pokemon] Fetch failure';
